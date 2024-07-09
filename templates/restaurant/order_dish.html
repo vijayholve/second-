@@ -1,0 +1,60 @@
+{% extends "base/main.html" %}
+{% block css_content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'restaurant/orderdish.css' %}?v={{ time }}}">
+{% endblock css_content %}
+
+{% block content %}
+{% include "base/slide_bar.html" %}
+<div class="slide-bar-1">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<div class="box-container">
+   
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="image">
+            <img src="/media/{{dish.dishImage}}" alt="">
+            <h2>Dish: {{dish.dishName}}</h2>
+        </div>
+    <div class="info">
+      <div class="product-info">
+        <div class="price">Price: {{dish.price}}</div>
+        <div class="rest-name">Restaurant: {{dish.restaurants}}</div>
+        {% comment %} <h4>description: {{dish.description}}</h4> {% endcomment %}
+        <div class="delivery">delivery Charges: {{delivery}}</div>
+        <h2>Total is {{total}} </h2><p>(including 18% gst)</p>
+        <div class="reviews">
+            <div><a href="{% url 'reviews-dish' dish.id %}">Reviews</a></div>
+
+            <div class="Stars" style="--rating:{{rating|default:0}};" aria-label="Rating of this product is {{ rating|default:4|floatformat:1 }} out of 5.">
+            </div>
+        <div>
+            
+            <span>({{rating_count}} reviews)</span>
+          </div>
+        </div>
+      </div>
+    
+        <div class="give_rate">
+            <div class="comment">
+                <input type="text" name="comment" class="comment-input" placeholder="Comment">
+                </div>
+            {% include 'base/review.html' %}
+        </div>
+        <div class="info-input">
+       <label for="location">Your Loaction</label><br>
+        <input type="text" name="location" id="location" placeholder="location"> <br>
+        <button class="button-85">Order It</button>
+    </div>
+    </div>
+   
+    </form>
+</div>
+{% comment %} <div></div> {% endcomment %}
+</div>
+
+{% endblock content %}
+

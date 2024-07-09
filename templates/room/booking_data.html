@@ -1,0 +1,110 @@
+     {% extends "base/main.html" %}
+{% load static %}
+{% block css_content %}
+<link rel="stylesheet" href="{% static 'room/room_data.css'%}?v={{time}}">
+<style>
+    .portada {  
+
+        background-image: url("/media/{{profile.profilePicture}}/");
+        }
+</style>
+{% endblock css_content %}
+
+{% block content %}
+{% include 'base/navigation.html' %}
+<div class="card">
+    <div class="card-text">
+      <div class="portada">
+      </div>
+      <div class="title-total">   
+        {% comment %} <div class="title"><a href="{% url 'profile-update' profile.id %}">Update</a> </div> {% endcomment %}
+        <h2>@{{profile.user.username}}</h2>
+    
+    <div class="desc">{{profile.user.email}}
+        {{profile.city}}</div>
+        <div class="actions">
+            <button><i class="far fa-heart"></i></button>
+            <div >
+              <a href="{% url 'user-dishes' request.user.id %}" class="image-logo">
+                <img src="/media/restaurant_images/images.png" alt="">
+                <p>Dishes</p>
+               </a> 
+              </div>
+            <div >
+            <a href="{% url 'user-rooms' request.user.id %}" class="image-logo">
+              <img src="/media/roomImages/images.jpg" alt="">
+              <p>Rooms</p>
+             </a> 
+            </div>
+          </div></div>
+    </div>
+  </div>
+  <div class="total-room">Your Room</div>
+
+<div class="room-container">
+   
+    <br>
+    {% comment %} {% include 'base/search_bar.html' %} {% endcomment %}
+    {% for room in rooms %}
+    <div class="container">
+        <img src="/media/{{ room.roomImage }}" alt="Room Image"/>
+        <div class="container__text">
+            {% comment %} <h4><a href="{% url 'delete-room' room.id %}">delete</a></h4> {% endcomment %}
+          <div>   <h1>{{ room.roomName }}</h1>
+          </div>
+         
+          <div class="book-info">
+                <div class="container__text__timing_time">
+                    <h2>Type</h2>
+                    <p>{{ room.roomType }}</p>
+                </div>
+                <div class="container__text__timing_time">
+                    <h2>Price</h2>
+                    <p>{{ total_price|get_item:room.id }}</p>
+                </div>
+                <div class="container__text__timing_time">
+                    <h2>Duration</h2>
+                    <p>{{ duration|get_item:room.id }}</p>
+                </div>
+                <div class="container__text__timing_time">
+                    <h2>Location</h2>
+                    <p>{{ room.location }}</p>
+                </div>
+                
+
+        
+          </div>
+          <div class="time-data">
+            <div class="container__text__timing_time">
+                <h5>start date</h5>
+                <ol>
+                    {% for date in start_dates|get_item:room.id %}
+                        <li>{{ date|date:"F j, Y" }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <div class="container__text__timing_time">
+                <h5>end dates</h5>
+                <ol>
+                    {% for date in end_dates|get_item:room.id %}
+                        <li>{{ date|date:"F j, Y" }}</li>
+                    {% endfor %}
+                </ol>
+            </div>  
+          </div>
+                <div class="reviews">
+                    <div class="Stars" style="--rating: {{review_booking|get_item:room.id}};" aria-label="Rating of this product is {{ rating|default:4|floatformat:1 }} out of 5.">
+                        </div>
+                <div>
+                    
+                    <span>({{rating_count|get_item:room.id}} reviews)</span>
+                
+                {% comment %} <a href="{% url 'booking-room' room.id %}"><button class="btn">View Details <i class="fa fa-arrow-right"></i></button></a> {% endcomment %}
+            </div>
+                </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+{% endblock content %} 

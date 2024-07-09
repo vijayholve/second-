@@ -1,0 +1,44 @@
+{% extends "base/main.html" %}
+{% load static %} 
+{% block css_content %}
+{% include 'base/navigation.html' %}
+<link rel="stylesheet" href="{% static 'account/profile_new.css' %} ?v={{time}} ">
+<style>
+    .portada {  
+
+    background-image: url("/media/{{profile.profilePicture}}/");
+    }
+   
+</style>
+{% endblock css_content %}
+{% block content %}
+
+<div class="card">
+    <div class="card-text">
+      <div class="portada">
+      </div>
+      <div class="title-total">   
+        <div class="title"><a href="{% url 'profile-update' profile.id %}">Update</a> </div>
+        <h2>@{{profile.user.username}}</h2>
+    
+    <div class="desc">{{profile.user.email}}
+        {{profile.city}}</div>
+    <div class="actions">
+      <button><i class="far fa-heart"></i></button>
+      <div >
+        <a href="{% url 'user-dishes' request.user.id %}" class="image-logo">
+          <img src="/media/restaurant_images/images.png" alt="">
+          <p>Dishes</p>
+         </a> 
+        </div>
+      <div >
+      <a href="{% url 'user-rooms' request.user.id %}" class="image-logo">
+        <img src="/media/roomImages/images.jpg" alt="">
+        <p>Rooms</p>
+       </a> 
+      </div>
+    </div></div>
+    </div>
+  </div>
+{% endblock content %}
+

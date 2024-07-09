@@ -1,0 +1,38 @@
+.all_review{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.review-card{
+    width:70%;
+    height:150px;
+    border: 2px solid black;
+    margin: 10px auto;
+
+}
+.profile-image img{
+    width:40px;
+    border-radius:50%;
+    margin:5px 0;
+}
+.profile {
+    display:flex;
+    
+    margin:10px;
+}
+.profile div{
+    margin:5px 8px;
+}
+.profile-name{
+    font-size:20px;
+    font-weight:200;
+}   
+.container-review{
+    display:flex;
+    justify-content:space-between;
+    margin:8px;
+}
+.comment{
+    margin-left:10px;
+}

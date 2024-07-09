@@ -1,0 +1,85 @@
+{% extends "base/main.html" %}
+{% load static %}
+{% block css_content %}
+<link rel="stylesheet" href="{% static 'restaurant/dish_data.css'%}?v={{time}} ">
+<style>
+    .portada {  
+
+        background-image: url("/media/{{profile.profilePicture}}/");
+        }
+</style>
+{% endblock css_content %}
+
+{% block content %}
+{% include 'base/navigation.html' %}
+<div class="card-profile">
+    <div class="card-profile-text">
+      <div class="portada">
+      </div>
+      <div class="title-total">   
+        {% comment %} <div class="title"><a href="{% url 'profile-update' profile.id %}">Update</a> </div> {% endcomment %}
+        <h2>@{{profile.user.username}}</h2>
+    
+    <div class="desc">{{profile.user.email}}
+        {{profile.city}}</div>
+        <div class="actions">
+          <button><i class="far fa-heart"></i></button>
+          <div >
+            <a href="{% url 'user-dishes' request.user.id %}" class="image-logo">
+              <img src="/media/restaurant_images/images.png" alt="">
+              <p>Dishes</p>
+             </a> 
+            </div>
+          <div >
+          <a href="{% url 'user-rooms' request.user.id %}" class="image-logo">
+            <img src="/media/roomImages/images.jpg" alt="">
+            <p>Rooms</p>
+           </a> 
+          </div>
+        </div></div>
+    </div>
+  </div>
+
+  
+  {% if  total_dish != 0%}
+  <div class="total_dish">Your Order Dishes is {{total_dish}}</div>
+  {% else  %}
+  <div class="total_dish">You Did not ordered Dish </div>
+  {% endif %}
+  <div class="alldish">
+    {% for dish in dishes %}
+    <div class="card-container">
+      <div class="card u-clearfix">
+        <div class="card-body">
+          <span class="card-number card-circle subtle">{{dish.id}}</span>
+          <span class="card-author subtle">{{dish.user.username}}</span>
+          <h2 class="card-title">{{dish.dishName}}</h2>
+          <h4>{{rest_dict|get_item:dish.id}}</h4>
+          <span class="card-description subtle">₹{{sum_order|get_item:dish.id}}</span>
+          <span>{{count_dish|get_item:dish.id}}</span>
+          <div class="reviews">
+            <div class="Stars" style="--rating:{{review_order|get_item:dish.id}};" aria-label="Rating of this product is {{ rating|default:4|floatformat:1 }} out of 5.">
+                </div>
+              
+            
+            <span>({{rating_count|get_item:dish.id}} reviews)</span>
+          </div>
+
+          
+        </div>
+        
+       
+        <img src="/media/{{dish.dishImage}}/" alt="{{dish.dishImage}}" class="card-media" />
+        
+      </div>
+      <div class="card-shadow"></div>
+    </div>
+    
+    
+{% endfor%}
+ </div>
+
+{% endblock content %}
+
+
+

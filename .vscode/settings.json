@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./hotels"
+    ],
+    "CodeGPT.apiKey": "CodeGPT Plus Beta"
+}

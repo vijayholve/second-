@@ -1,0 +1,86 @@
+{% extends "base/main.html" %}
+{% load static %}
+{% block css_content %}
+<link rel="stylesheet" href="{% static 'room/home_room.css'%}">
+{% endblock css_content %}
+
+{% block content %}
+
+<div class="room-container">
+    <div class="back-image">
+        {% include 'base/navigation.html' %}
+        
+        {% include "base/search_bar.html" %}
+        {% if request.user.userprofile %}
+        {% elif request.user.is_authenticated %}
+           <h1><a href="{% url 'create-profile' %}">create profile</a></h1>
+        {% endif %}
+        
+            
+               
+       
+        </div>
+        </div>
+        </div>
+        </div>
+    {% for room in rooms %}
+    <div class="container">
+        <img src="/media/{{ room.roomImage }}" alt="Room Image"/>
+        <div class="container__text">
+        <div>
+            
+            {% if  request.user.is_staff %}
+                
+            
+            <h4><a href="{% url 'delete-room' room.id %}">delete</a></h4>
+            {% endif %}
+            <h1>{{ room.roomName }}</h1>
+            <div class="container__text__star">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+            </div>
+        </div>
+            <div class="book-info">
+            <div class="container__text__timing">
+                <div class="container__text__timing_time">
+                    <h2>Type</h2>
+                    <p>{{ room.roomType }}</p>
+                </div>
+                <div class="container__text__timing_time">
+                    <h2>Price</h2>
+                    <p>{{ room.price }}</p>
+                </div>
+                <div class="container__text__timing_time">
+                    <h2>Location</h2>
+                    <p>{{ room.location }}</p>
+                </div>
+                {% if room.available %}
+                <h3>✅</h3>
+                {% else %}
+                <h3>❎</h3>
+                {% endif %}
+
+                {% if room in booked_rooms %}
+                <h2>Booked</h2>
+                {% endif %}
+
+                {% comment %} <h2>{{start_date|get_item:room.id}}</h2>  {% endcomment %}
+            </div>
+             
+                <div class="reviews">
+                    <div class="Stars" style="--rating: {{review_booking|get_item:room.id}};" aria-label="Rating of this product is {{ rating|default:4|floatformat:1 }} out of 5.">
+                        </div>
+                
+                    
+                    <span>({{rating_count|get_item:room.id}} reviews)</span>
+                </div>
+                <a href="{% url 'booking-room' room.id %}"><button class="btn">Book {{room.roomName}} <i class="fa fa-arrow-right"></i></button></a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

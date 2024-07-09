@@ -1,0 +1,87 @@
+{% extends "base/main.html" %}
+{% load static %}
+{% block css_content %}
+<link rel="stylesheet" href="{% static 'room/booking_room.css' %}">
+{% endblock css_content %}
+{% block content %}
+
+{% include "base/navigation.html" %}
+<main>
+    <div class="card">
+        <div class="card__title">
+            <div class="icon">
+                <a href="#"><i class="fa fa-arrow-left red-icon"></i>
+                </a>
+            </div>
+            <h3></h3>
+        </div>
+        <div class="card__body">
+            <div class="half">
+                <div class="featured_text">
+                    <h1>{{room.roomName}}</h1>
+                    <p class="sub">{{room.roomType}}</p>
+                    <p class="price">₹{{room.price}}</p>
+                </div>
+                <div class="image">
+                    <img src="/media/{{room.roomImage}}" alt="">
+                </div>
+                <div class="half">
+                    <span class="stock"><i class="fa fa-pen"></i> {{room.location}}</span>
+                    <div class="reviews">
+                        <div class="Stars" style="--rating:{{rating|default:0}};" aria-label="Rating of this product is {{ rating|default:4|floatformat:1 }} out of 5.">
+                        </div>
+                        <div>
+                            <span>({{rating_count}} reviews)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="card__footer">
+                    <div class="sedate">
+                        <div>
+                            <label for="startdate">Start date:</label>
+                            <input type="date" id="startdate" name="startdate" onchange="calculateDuration()"><br>
+                            <label for="enddate">End Date:</label>
+                            <input type="date" id="enddate" name="enddate" onchange="calculateDuration()"><br>
+                            <h3 id="durations" name="durations"></h3>
+                            <h3 id="total" name="total"></h3> <!-- Added this line to display the total -->
+                        </div>
+                        <div class="give_rate">
+                            {% include 'base/review.html' %}
+                        </div>
+                    </div>
+                </div>
+                <div class="action">
+                    <button type="submit" class="btn5">Book</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+<script>
+function calculateDuration() {
+    var startdate = document.getElementById("startdate").value;
+    var enddate = document.getElementById("enddate").value;
+
+    if (startdate && enddate) {
+        let price_var = document.querySelector(".price").textContent.trim().replace('₹', '');
+        var start = new Date(startdate);
+        var end = new Date(enddate);
+        var duration = (end - start) / (1000 * 3600 * 24);
+
+        if (isNaN(duration) || duration <= 0) {
+            document.getElementById("durations").innerHTML = "Invalid date range";
+            document.getElementById("total").innerHTML = "";
+            return;
+        }
+
+        let total = parseInt(price_var) * duration * 1.18;
+        document.getElementById("durations").innerHTML = "Duration: " + duration + " days";
+        document.getElementById("total").innerHTML = "Total: ₹" + total.toFixed(2);
+    }
+}
+</script>
+
+{% endblock content %}

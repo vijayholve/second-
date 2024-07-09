@@ -1,0 +1,12 @@
+{% extends "base/main.html" %}
+{% block content %}
+<div class="message-containner">       
+    <div class="all-message-user">
+        {% for receiver  in receivers %} 
+        <a href="{% url 'message-owner' receiver_id=user_lists|get_item:receiver sender_id=request.user.id rest_id=restaurant.id %}">
+            <div>{{receiver}}</div> 
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

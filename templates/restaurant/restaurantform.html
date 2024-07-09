@@ -1,0 +1,58 @@
+{% extends "base/main.html" %}
+{% load static %}
+{% block css_content %}
+<link rel="stylesheet"  href="{% static 'restaurant/restaurantform.css' %}">
+{% endblock css_content %}
+{% block content %}
+<div class="restaurant_page">{% comment %} name is changed of class login to restaurnant 
+    example: login_page now it is restaurant_page {% endcomment %}
+	<div class="screen">
+		<div class="screen__content">
+			<form class="restaurant" method="POST" action="" enctype="multipart/form-data">
+				{% csrf_token %}
+				<div class="login__field">
+					{% include "base/messages.html" %}
+				</div>
+				<div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+					<input type="text" class="login__input" name="restaurantName" value="{{restaurant.restaurantName}}" placeholder="Restaurant Name...">
+				</div>
+				<div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+					<input type="text" class="login__input" name="locations" value="{{restaurant.locations}}" placeholder="Enter Location...">
+				</div>
+				<div class="login__field">
+					<label for="image">Main image</label>
+					<input type="file" class="login__input" name="image"  placeholder="Choose File...">
+				</div>
+				 <div class="login__field">
+					<label for="addimage">background Images</label>
+					<input type="file" class="login__input" name="addimage"  placeholder="Choose File..." id="file-input" multiple>
+				</div>
+				<div>
+					{{form}}
+				</div>
+				<button class="button-85" role="button">submit</button>
+			</form>
+			<div class="social-login">
+				<h3><a href="{% url 'home' %}">home</a></h3>
+			</div>
+				<div class="social-icons">
+					<a href="#" class="social-login__icon fab fa-instagram"></a>
+					<a href="#" class="social-login__icon fab fa-facebook"></a>
+					<a href="#" class="social-login__icon fab fa-twitter"></a>
+				</div>
+			</div>
+		</div>
+		<div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>		
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		
+	</div>
+</div>
+<script>
+
+</script>
+{% endblock content %}

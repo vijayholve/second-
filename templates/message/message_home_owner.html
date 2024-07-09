@@ -1,0 +1,42 @@
+{% extends "base/main.html" %}
+{% load static %}
+{% block css_content %}
+<link rel="stylesheet" href="{% static 'message/message_home.css' %}">
+{% endblock css_content %}
+{% block content %}
+<div class="message-main">
+        <div class="message-box">
+            <div class="receiver-profile">{{receiver.username}}</div>
+            {% for obj in message_obj  %}
+            <div class="message-sender-receiver">
+                <div class="message-show">
+                    <div class="message-time">{{message_time|get_item:obj.id}}</div>
+                    <div class="sender-message-is">{{obj.text}}</div>   
+                    {% if obj.sender == request.user %}
+                    <div class="message-sender">your</div>
+                    {% else %}
+                    <div class="message-sender">{{obj.sender.username}}</div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            
+    </div>
+    <div class="message-send">
+        <form  method="POST" action="" class="message-form">
+            {% csrf_token %}
+            <input type="text" placeholder="Enter your message here" name="message" class="message">
+            <input type="submit" class="message-btn">
+        </form>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+
+
+
+
+
+

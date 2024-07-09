@@ -1,0 +1,141 @@
+
+.room-image img{
+    width:130px;
+}
+.room-box{
+    display:flex;
+    padding:30px;
+    background-color:grey;
+    margin:30px;
+    flex-direction:row;
+    flex-wrap:wrap;
+}
+.room-box *{
+    margin: 20px;
+}
+.room-name{
+font-size:30px;
+
+}
+.room-info{
+display:inline;
+
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+background-image: linear-gradient(
+    to right bottom,
+    #b91eda,
+    #a02ae0,
+    #8234e5,
+    #5d3be8,
+    #1241eb
+  );
+   font-family: Arial, Helvetica, sans-serif;
+
+place-items: center;
+min-height: 100vh;
+}
+
+.container {
+background-color: white;
+position: relative;
+display: grid;
+grid-template-columns: 300px 600px;
+border-radius: 5px;
+box-shadow: 0 15px 20px rgba(0, 0, 0, 0.356);
+margin: 100px;
+img {
+width: 300px;
+height: 300px;
+border-radius:5px 0 0 5px;
+}
+.btn {
+position: absolute;
+bottom: -20px;
+right: -20px;
+border: none;
+outline: none;
+display: flex;
+align-items: center;
+background-color: #fc9400;
+color: white;
+padding: 22px 45px;
+font-size: 1rem;
+text-transform: uppercase;
+border-radius: 5px;
+cursor: pointer;
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.294);
+i {
+margin-left: 20px;
+font-size: 1.5rem;
+}
+}
+}
+.container__text {
+padding: 40px 40px 0;
+h1 {
+color: black;
+font-weight: 400;
+}
+.container__text__star span {
+font-size: 0.8rem;
+color: #ffa800;
+margin: -5px 0 20px;
+}
+p {
+font-size: 0.9rem;
+}
+.container__text__timing {
+display: flex;
+margin: 20px 0 10px;
+.container__text__timing_time {
+margin-right: 40px;
+}
+h2 {
+margin-bottom: 5px;
+font-size: 1rem;
+font-weight: 400;
+color: #818189;
+}
+p {
+color:black;
+font-weight: bold;
+font-size: 1.2rem;
+}
+}
+}
+
+.container{
+border-radius:30px;
+
+img{
+  border-radius:30px;
+
+}
+}
+
+
+.back-image{
+width:100%;
+height:400px;
+    background:url("/media/roomImages/happy-family-having-pillow-fight-260nw-2200411551.jpg");
+     background-size:cover;
+  opacity:0,5;
+  
+.search-box{
+   margin-top:20px ;
+}
+.tabbar{
+    float:rightb  ;
+    
+    margin-right:20px;
+    
+}
+}

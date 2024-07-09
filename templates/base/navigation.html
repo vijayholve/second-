@@ -1,0 +1,97 @@
+
+{% extends "base/main.html" %}
+{% load static %}
+{% block css_content %}
+<link rel="stylesheet" href="{% static 'cssfile/nav.css'%}">
+
+{% endblock css_content %}
+{% block content %}
+<div class="nav-container">
+<nav class="menu" id="nav">
+	<span class="nav-item active">
+		<span class="material-symbols-outlined">	
+			home
+			</span>
+		<a href="{% url 'home' %}">Home</a>
+		
+		
+	</span>
+	<span class="nav-item">
+		<span class="material-symbols-outlined">
+			account_circle
+			</span>
+		<a href="{% url 'profile' request.user.id %}">Profile</a>
+        
+	</span>
+	<span class="nav-item">
+		<span class="material-symbols-outlined">
+			apartment
+			</span>
+			<a href="{% url 'home-room'  %}">Room</a>
+	</span>
+	<span class="nav-item">
+		<span class="icon">
+			<span class="material-symbols-outlined">
+				call
+				</span>		</span>
+		<a href="{% url 'about' %}">About</a>
+	</span>
+
+	<span class="nav-item">
+		
+			<span class="material-symbols-outlined">
+				call
+				</span>		
+		<a href="{% url 'services'%}">Contact and Services</a>
+	</span>
+	<div class="page">
+		
+		{% if request.user.is_authenticated %} 
+		
+		{% if request.user.is_staff %}			
+		<span class="nav-item">
+			<span class="icon">
+				<span class="subicon">.</span>
+				<i data-feather="bell"></i>
+			</span>
+			<a href="{% url 'restaurant-create'  %}">create Restaurant</a>
+			
+		</span>
+	</div>
+		<div>
+		<span class="nav-item">
+			<span class="icon">
+				<span class="subicon">.</span>
+				<i data-feather="bell"></i>
+			</span>
+			<div>
+				<h3><a href="{% url 'create-room' %}">Create Room</a></h3>
+			</div>
+		</span>
+	
+	</div>
+	{% endif %}
+	<div >
+		<span class="nav-item">
+			<span class="material-symbols-outlined">
+				logout
+				</span>`
+			<a href="{% url 'logout-page' %}">LogOut</a>
+		</span>
+	</div>
+		{% else %}
+		<div >
+		<span class="nav-item">
+			<span class="icon">
+				<i data-feather="bell"></i>
+			</span>
+			<a href="{% url 'login-page'  %}">Login</a>
+			
+		</span>
+		</div>
+		{% endif %}
+	</div>
+
+</nav>
+
+{% endblock content%}

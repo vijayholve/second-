@@ -1,0 +1,65 @@
+{% extends "base/main.html" %}
+{% load static %}
+
+{% block css_content %}
+
+<link rel="stylesheet" href="{% static 'cssfile/services.css'%}">
+{% endblock css_content %}
+
+{% block content%}
+{% include 'base/navigation.html' %}
+    <div class="container">
+        <header>
+            <h1>Services of Our Website</h1>
+        </header>
+
+        <section class="section">
+            <h2>Food Ordering Service</h2>
+            <ul>
+                <li><strong>Variety of Cuisines:</strong> Access a wide range of cuisines from multiple restaurants located in Pune.</li>
+                <li><strong>Easy Ordering Process:</strong> Browse menus, select dishes, and place orders effortlessly.</li>
+                <li><strong>Timely Delivery:</strong> Ensuring fresh and prompt delivery to your doorstep.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Room Booking Service</h2>
+            <ul>
+                <li><strong>Luxurious Stays:</strong> Book premium rooms in locations like Koregaon Park.</li>
+                <li><strong>Budget-Friendly Options:</strong> Find affordable accommodation in areas such as Shivajinagar.</li>
+                <li><strong>Scenic Retreats:</strong> Explore and book retreats near picturesque locations like Lonavala.</li>
+                <li><strong>Convenient Booking:</strong> Seamless booking experience with easy search and reservation.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Create Listings</h2>
+            <ul>
+                <li><strong>Restaurant Listings:</strong> Showcase menus and services to attract customers.</li>
+                <li><strong>Room Listings:</strong> Highlight room features and amenities for potential guests.</li>
+                <li><strong>Manage Listings:</strong> Easily update and maintain listings for accuracy.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Customer Support</h2>
+            <ul>
+                <li><strong>24/7 Support:</strong> Dedicated customer support available round the clock.</li>
+                <li><strong>Feedback and Reviews:</strong> Provide and review services for continuous improvement.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Promotions and Discounts</h2>
+            <ul>
+                <li><strong>Exclusive Offers:</strong> Enjoy discounts and special offers on orders and bookings.</li>
+                <li><strong>Loyalty Programs:</strong> Rewarding loyal customers with perks and benefits.</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>Explore our website today and experience the convenience and variety we offer!</p>
+        </footer>
+    </div>
+    {% include 'others/contact.html' %}
+{%  endblock content%}

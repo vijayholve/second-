@@ -1,0 +1,57 @@
+{% extends "base/main.html" %}
+
+{% load static %}
+{% block css_content %}
+    <link rel="stylesheet" href="{% static 'cssfile/dishcreate.css' %}">	
+{% endblock css_content %}
+{% block content %}
+
+<div class="container">
+	<div class="text">
+	  Create  Dish
+	</div>
+	<form method="POST" action="" enctype="multipart/form-data">
+		{% csrf_token %}
+	   <div class="form-row">
+		  <div class="input-data">
+			<input type="text" class="login__input" name="dishname" >
+			 <div class="underline"></div>
+			 <label for="">Dish Name</label>
+		  </div>
+		  <div class="input-data">
+			<input type="number" class="login__input" name="price" >
+			 <div class="underline"></div>
+			 <label for="">Price</label>
+		  </div>
+	   </div>
+	   <div class="form-row">
+		
+		  <div class="input-data">
+			<input type="text" class="login__input" name="description"  >
+			 <div class="underline"></div>
+			 <label for="">description</label>
+		  </div>
+	   </div>
+	   <div class="form-row">
+	   <div class="input-data textarea">
+		{% comment %} <input type="file" class="login__input" name="dishImage" placeholder=" choose image..."> {% endcomment %}
+		<br />
+		<input type="file" class="login__input" name="dishImage" placeholder=" choose image...">
+		  <div class="underline"></div>
+		  <label for="">Choose a file</label>
+		  <br />
+		  
+		  <div class="form-row submit-btn">
+			 <div class="input-data">
+				<div class="inner"></div>
+				<input type="submit" value="submit">
+			 </div>
+		  </div>
+		</form>
+		<h2><a href="{% url 'restaurant-data' restaurant.id %}">Go back</a></h2>
+	</div>
+	
+{% endblock content %}
+    
+
+

@@ -1,0 +1,32 @@
+{% extends "base/main.html" %}\
+{% block css_content %}
+ 
+{% load static %} 
+<link rel="stylesheet" href="{% static 'reviews/dish_reviews.css' %}?v={{time}}">
+{% endblock css_content %}
+{% block content %}
+
+<div class="all_review">
+    {% for review in reviews_list%}
+    <div class="review-card">
+        <div class="profile">
+            <div class="profile-image"><img src="/media/{{review.user.userprofile.profilePicture}}/" alt=""></div>
+            <div class="profile-name">{{review.user.username}}</div>
+
+        </div>
+        <div class="review">
+        <div class="container-review">
+            <div class="rating">⭐{{review.review}}</div>
+
+            <div class="created">{{review_create|get_item:review.id}}</div> 
+        </div class="comment">   
+            {% if review.comment %}
+            <div class="comment">{{review.comment}}</div>
+            {% endif %}
+            
+        </div>
+        <div class="review-image"></div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

@@ -1,0 +1,252 @@
+
+
+  
+ @charset "UTF-8";
+ @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+ 
+ body {
+   font-family: 'Open Sans', sans-serif;
+   font-weight: 300;
+   line-height: 1.42em;
+   color:#6a0cd6; 
+      background-image: linear-gradient(to top, #d20606 0%, #ded714 100%);
+
+ }
+ 
+ .rest-name  {
+  font-size:3em; 
+  font-weight: 300;
+  line-height:1em;
+  text-align: center;
+  color: #4DC3FA;
+  font: italic 5.2rem "Fira Sans", serif;
+  font-size:20px;
+}
+
+ 
+
+
+ .blue { color: #185875; }
+ .yellow { color: #FFF842; }
+
+
+ .image{
+
+	 height:100%;
+	 width:110px;
+   
+ }  
+ .image-restaurant img{ 
+	 display:block;
+  width: 150px;
+	 height:200px;
+  box-shadow: 2px 3px 17px gray;
+ align-items:center;
+	 margin:0 auto;;
+	 border:2px solid rgb(53, 146, 167);
+	 align-items:center;
+	 
+ }
+
+#box img{
+	width:250px;
+	
+}
+.dishes h4{
+	display:inline;
+	margin:90px;
+}
+
+
+.main-container{
+	display:flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content:space-around;
+
+}
+.container-box{
+	display:block;
+	border:2px solid black;
+	margin:20px;
+	background-image: linear-gradient(to top, #1ac5c6 0%, #b99d10 100%);
+
+	height:350px;
+	width:300px;
+	transition:1s ;
+}
+.container-box:hover{
+	box-shadow: 20 10 19px skyblue;
+	padding:5px;
+  background-color: #FFF842;
+transform:rotate(-5deg);
+	margin-bottom:12px;
+}
+.operation *{
+	display:inline;
+	
+}
+
+
+:root {
+	--surface-color: #fff;
+	--curve: 40;
+  }
+  
+
+
+  .cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 2rem;
+	margin: 4rem 5vw;
+	padding: 0;
+	list-style-type: none;
+  }	
+  
+  .card {
+	position: relative;
+	display: block;
+	height: 100%;  
+	border-radius: calc(var(--curve) * 1px);
+	overflow: hidden;
+	text-decoration: none;
+  }
+  
+  .card__image {      
+	width: 100%;
+	height: 400px;
+  }
+  
+  .card__overlay {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;      
+	border-radius: calc(var(--curve) * 1px);    
+	background-color: var(--surface-color);      
+	transform: translateY(100%);
+	transition: .2s ease-in-out;
+  }
+  
+  .card:hover .card__overlay {
+	transform: translateY(0);
+  }
+  
+  .card__header {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 2em;
+	padding: 2em;
+	border-radius: calc(var(--curve) * 1px) 0 0 0;    
+	background-color: var(--surface-color);
+	transform: translateY(-100%);
+	transition: .2s ease-in-out;
+  }
+  
+  .card__arc {
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	bottom: 100%;
+	right: 0;      
+	z-index: 1;
+  }
+  
+  .card__arc path {
+	fill: var(--surface-color);
+	
+  }       
+  
+  .card:hover .card__header {
+	transform: translateY(0);
+  }
+  
+  .card__thumb {
+	flex-shrink: 0;
+	width: 50px;
+	height: 50px;      
+	border-radius: 50%;      
+  }
+  
+  .card__title {
+	font-size: 1em;
+	margin: 0 0 .3em;
+	color: #6A515E;
+  }
+  
+  .card__tagline {
+	display: block;
+	margin: 1em 0;
+	font-family: "MockFlowFont";  
+	font-size: .8em; 
+	color: #D7BDCA;  
+  }
+  
+  .card__status {
+	font-size: .8em;
+	color: #D7BDCA;
+  }
+  
+  .card__description {
+	padding: 0 2em 2em;
+	margin: 0;
+	color: #D7BDCA;
+	font-family: "MockFlowFont";   
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+  }    
+
+@media(max-width:400px){
+	  .cards {
+	display: flex;
+	flex-wrap:wrap;
+	/* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+	gap: 2rem;
+	margin: 30px 20px;
+	padding: 0;
+	list-style-type: none;
+  }	
+   .card__image {      
+	width: 400px;
+	height: 400px;
+  }
+  .card {
+	position: relative;
+	display: block;
+	width:70%;
+	height: 100%;  
+	border-radius: calc(var(--curve) * 1px);
+	overflow: hidden;
+	text-decoration: none;
+  }
+	ul a img{
+		width:400px;
+	}
+}
+
+.back-image{
+	width:100%;
+	height:450px;
+		background-image:url("/media/restaurant_images/Zomato-hero.jpg");
+
+   .search-box{
+	   margin-top:20px ;
+   }
+	.tabbar{
+		float:rightb  ;
+		
+		margin-right:20px;
+		
+	}
+}
+
+.rest-image{
+	width:300px;
+	
+}
+		 	

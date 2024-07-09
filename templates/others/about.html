@@ -1,0 +1,31 @@
+{% extends "base/main.html" %}
+{% block css_content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'cssfile/services.css' %}  ?v={{time}}">
+
+{% endblock css_content %}
+{% block content%}
+    {% include 'base/navigation.html' %}
+
+    <div class="container">
+        <h1>Welcome to Our Website!</h1>
+        <div class="section">
+            <p>Our website is your ultimate destination for booking rooms and ordering dishes from a variety of restaurants. We offer a seamless experience where you can easily find and book accommodations as well as order food from numerous eateries located in Pune.</p>
+        </div>
+        <div class="section">
+            <h2>Order Dishes</h2>
+            <p>Discover a world of culinary delights with our platform. Whether you're craving a spicy biryani from Blue Nile, a delicious pizza from Pizza Hut, or a gourmet burger from Burger King, we've got you covered. Explore an extensive selection of dining options and have your favorite dishes delivered right to your doorstep.</p>
+        </div>
+        <div class="section">
+            <h2>Room Booking</h2>
+            <p>In addition to our food delivery service, we provide convenient room booking options. Choose from luxurious stays in Koregaon Park, budget-friendly accommodations in Shivajinagar, or scenic retreats near Lonavala. Enjoy a comfortable and hassle-free stay, tailored to your preferences and needs.</p>
+        </div>
+        <div class="section">
+            <h2>Create Listings</h2>
+            <p>Are you a restaurant owner or a property manager? Our platform allows you to create listings for your restaurant or rooms. Reach a wider audience by showcasing your culinary offerings or accommodation options to our growing user base. Join us today and enhance your business visibility.</p>
+        </div>
+        <div class="section">
+            <p>Explore our website today and enjoy the best of Pune's restaurants, accommodation options, and business opportunities all in one place!</p>
+        </div>
+    </div>
+{% endblock content%}

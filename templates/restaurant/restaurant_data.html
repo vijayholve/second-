@@ -1,0 +1,141 @@
+{% extends "base/main.html" %}
+{% load static %}
+{% block css_content %}
+  <link rel="stylesheet" href="{%  static 'restaurant/restaurant_data.css' %}">\
+  <style>
+    .restaurant-obj{
+{% for img in images %}
+      background: url("/media/{{img.image}}/");
+
+{% endfor %}
+
+    }
+  </style>
+{% endblock css_content %}  
+{% block content %}
+{% include "base/navigation.html"   %}
+{% if request.user.username is restaurant.user.username %}
+<h2><a href="{% url 'receiver-list' rest_id=restaurant.id  %}">recived Message</a></h2>
+{% else %}
+<h2><a href="{% url 'message-home' rest_id=restaurant.id  %}"> Message</a></h2>
+
+{% endif %}
+
+   
+<div class="restaurant-details">
+  <div class="restaurant-obj">
+    <div class="operation">
+      {% if request.user.is_staff  %}   
+      <h4>@ {{restaurant.id}}</h4>
+      <button class="button-85" role="button">
+      <a href="{% url 'restaurant-update' restaurant.id %}" >edit</a>
+      </button>   
+      <button class="button-85" role="button">
+      <a href="{% url 'restaurant-delete' restaurant.id %}" >delete</a>
+      </button>   
+      <button class="button-85" role="button">
+        <a href="{% url 'dish-create' restaurant.id %}" >create Dish</a>
+        </button> 
+      {% endif %}
+  </div>  
+    {% comment %} <div><input type="file"  name="addimage"></div> {% endcomment %}
+     <div class="restaurant_box">     
+      <div class="restaurant-image">
+        <img src="/media/{{restaurant.image}}" alt="">
+      </div>
+    <h1>{{restaurant.restaurantName}}</h1>
+     <h3>{{restaurant.locations}}</h3>
+     </div>
+    </div>
+    {% for message in messages %}
+      <li>{{message}}</li>
+{% endfor%}
+{% include 'base/search_bar.html' %}
+<form>
+<div class="send_value" name="under_value"></div>
+</form>
+{% if dishes.count == 0 %}
+<h2><a href="{%  url 'restaurant-data' restaurant.id %}">Show All </a></h2>
+{% endif %}
+<div class="alldish">
+{% for dish in dishes %}
+<a href="{% url 'dish-order' dish.id %}">
+<div class="card-container">
+  <div class="card u-clearfix">
+    <div class="card-body">
+      <span class="card-number card-circle subtle">{{dish.id}}</span>
+      <span class="card-author subtle">{{dish.user.username}}</span>
+      <h2 class="card-title">{{dish.dishName}}</h2>
+      <span class="card-description subtle">{{dish.description}}.</span>
+      
+         <a href="{% url 'dish-order' dish.id %}"> <button class="button-85">Order</button>
+    </div>
+    <a href="{%   url 'dish-order' dish.id %}">
+    <img src="/media/{{dish.dishImage}}/" alt="{{dish.dishImage}}" class="card-media" />
+    </a>
+    <div class="reviews">
+      <div class="Stars" style="--rating:{{review_order|get_item:dish.id}};" aria-label="Rating of this product is {{ rating|default:4|floatformat:1 }} out of 5.">
+          </div>
+      <span>({{rating_count|get_item:dish.id}} reviews)</span>
+    </div>
+
+  </div>
+  <div class="card-shadow"></div>
+</div>
+
+
+{% endfor%}
+</div>
+{% comment %} 
+{% if dishes.count != 0 %}
+<div class="screen_background">
+        <table class="container" >
+            <thead class="thead-dark">
+              <tr>
+                <th class="no">No</th>
+                <th scope="col">dish name</th>
+                <th scope="col">Image</th>
+                {% comment %} <th scope="col">decriptions</th> {% endcomment %}
+
+                {% comment %} {% if request.user.is_staff %}
+                <th scope="col">operations</th>
+                {% endif %}
+                <th class="no" scope="col">price</th>
+                <th class="no" scope="col">Order</th>
+
+              </tr> 
+            </thead>  
+          {% endif %}
+            <tbody> {% endcomment %}
+         {% comment %} {% for dish in dishes %}
+              
+              <tr>
+                <td>{{forloop.counter}}</td>
+                <td><h3>{{dish.dishName}}</h3></td>
+                <td>
+                    <div id="box">
+                      <img src="/media/{{dish.dishImage}}/" alt="{{dish.dishImage}}">
+                      </div>
+                  </td>
+                 <td>{{dish.description}}</td>
+                 {% if request.user.is_staff or request.user is dish.user %}
+                  <td>                                                                                                                            
+                        <div class="operation">
+                        <button class="button-85"><a href="{% url 'dish-update' dish.id %}">update</a></button><br>
+                        <button class="button-85"><a href="{% url 'dish-delete' dish.id %}">delete</a></button>
+                        </div>
+                  </td>
+                {% endif %}
+                <td>{{dish.price}}</td>
+                <td></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+      </div>
+ </div>  {% endcomment %}
+ <div>
+  <h3><a href="{% url 'dish-create' restaurant.id %}">Create dish</a></h3>
+ </div>
+<script src=" {% static 'scripts/restaurant_data.js' %}"></script> 
+{% endblock content %}

@@ -1,0 +1,52 @@
+{% extends "base/main.html" %}
+{% load static %}
+
+{% block css_content %}
+<link rel="stylesheet" href="{% static 'cssfile/login_page.css' %}">
+<link rel="stylesheet" href="{% static 'cssfile/dishcreate.css' %}">
+
+   
+{% endblock css_content %}
+{% block content %}
+<div class="login_page">
+	<div class="screen">
+		<div class="screen__content">
+			<form class="login" method="POST" action="" incttype="multipart/form-data" enctype="multipart/form-data">
+                <h2>update dish</h2>
+				{% csrf_token %}
+				<div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+					<input type="text" class="login__input" name="dishname" value="{{dish_obj.dishName}}" placeholder="Dish Name...">
+				</div>
+				<div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+					<input type="text" class="login__input" name="description" value="{{dish_obj.description}}" placeholder="Description...">
+				</div>
+                <div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+					<input type="number" class="login__input" name="price" value="{{dish_obj.price}}" placeholder=" Enter Price...">
+				</div>
+                <div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+					<input type="file" class="login__input" name="dishImage" placeholder=" choose image...">
+				</div>
+				<button class="button-85" role="button">submit</button>
+			</form>
+			<h2><a href="{% url 'restaurant-data' restaurant.id %}">Go back</a></h2>
+				<div class="social-icons">
+					<a href="#" class="social-login__icon fab fa-instagram"></a>
+					<a href="#" class="social-login__icon fab fa-facebook"></a>
+					<a href="#" class="social-login__icon fab fa-twitter"></a>
+				</div>
+			</div>
+		</div>
+		<div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>		
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		
+	</div>
+</div>
+{% endblock content %}
+ 

@@ -1,0 +1,32 @@
+{% load static %}
+{% block css_content %}
+<link rel="stylesheet" href="{% static 'cssfile/slide_bar.css' %}?v={{time}}">
+{% endblock css_content %}
+<div class="main-bar">
+   
+        <span class="slide-bar-2 material-symbols-outlined">
+            menu
+            </span>
+
+    <div class="bars">
+        {% if request.user.is_staff %}
+        <div class="bar">
+            <div class="bar-font" role="button">
+               <a href="{% url 'dish-delete' dish.id %}" >delete</a>
+               </div>  
+               </div>
+        <div class="bar">
+            <div class="bar-font" role="button">
+            <a href="{% url 'dish-update' dish.id %}" >Update</a>
+            </div>  
+        </div>
+        {% endif%}
+        <div class="bar"><a href="" class="bar-font"><a href="{% url 'reviews-dish' dish.id %}">Reviews</a></div>
+        <div class="bar"><a href="" class="bar-font"><a href="{% url 'restaurant-data' dish.restaurants.id %}">Restaurant</a></div>
+        <div class="bar"><a href="" class="bar-font"><a href="{% url 'home-room'  %}">Rooms</a></div>    
+    </div>
+    <div class="logos">
+
+    </div>
+</div>
+

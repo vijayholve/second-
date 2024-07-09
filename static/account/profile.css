@@ -1,0 +1,22 @@
+.main-profile .profile-box{
+    background-color: aquamarine;
+    margin:10%;
+    width:86%;
+    height:75%;
+    border:2px solid #000000;
+    font-size: larger;
+     display:flex;
+    flex-direction:column;
+    flex-wrap:wrap;
+}
+img{
+    width:250px;
+    margin-left: 20px;
+        margin-bottom: 20px;
+    }
+    .profile-box *{
+        margin: 20px;
+    }
+    .main-profile{
+        height:800px;
+    }

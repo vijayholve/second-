@@ -1,0 +1,60 @@
+
+{% extends "base/main.html" %}
+{% load static %}
+{% block css_content %}
+<link rel="stylesheet" href="{% static 'cssfile/nav.css'%}?v={{time}}">
+
+{% endblock css_content %}
+{% block content %}
+<nav class="menu" id="nav">
+	<span class="nav-item active">
+		<span class="icon">
+			<i data-feather="home"></i>
+		</span>
+		<a href="{% url 'home' %}">Home</a>
+		
+	</span>
+	<span class="nav-item">
+		<span class="icon">
+			<span class="subicon"> </span>
+			<i data-feather="bell"></i>
+		</span>
+		<a href="{% url 'profile' request.user.id %}">Profile</a>
+         <img src="/media/{{request.user.profile.profilePicture}}/" alt="">
+	</span>
+	<span class="nav-item">
+		<span class="icon">
+			<span class="subicon">1</span>
+			<i data-feather="bell"></i>
+		</span>
+		<a href="{% url 'home-room'  %}">Room</a>
+	</span>
+	<span class="nav-item">
+		<span class="icon">
+			<i data-feather="search"></i>
+		</span>
+		<a href="{% url 'about' %}">About</a>
+	</span>
+
+	<span class="nav-item">
+		<span class="icon">
+			<i data-feather="star"></i>
+		</span>
+		<a href="{% url 'services'%}">Contact and Services</a>
+	</span>
+	<span class="nav-item">
+		<span class="icon">
+			<i data-feather="star"></i>
+		</span>
+		<a href="{% url 'services'%}">Your Orders</a>
+	</span>
+	<span class="nav-item">
+		<span class="icon">
+			<i data-feather="star"></i>
+		</span>
+		<a href="{% url 'services'%}">Your Bookings</a>
+	</span>
+
+</nav>
+
+{% endblock content%}
